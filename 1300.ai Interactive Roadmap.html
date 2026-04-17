@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1300.ai Interactive Development Roadmap</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    max-height: 400px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 400px;
+    }
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.phase-btn.active {
+    background-color: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+}
+.phase-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+.phase-content.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-200 selection:text-indigo-900">
+
+<!-- Chosen Palette: Vibrant Executive (Indigo 600, Rose 500, Emerald 500, Amber 500 on Slate 50) -->
+<!-- Application Structure Plan: The SPA uses a dashboard-style vertical scroll format, prioritized for strategic digestion. Section 1 outlines the core thesis and KPIs. Section 2 breaks down the Two-Track funding model using side-by-side comparative cards. Section 3 translates the temporal roadmap into an interactive timeline, allowing deep dives into specific phases without overwhelming the initial view. Section 4 visualizes the technical architecture and scaling targets using Chart.js to show the composition of the stack and target market growth. -->
+<!-- Visualization & Content Choices: KPIs -> Inform -> Big Styled Text -> High impact overview. Funding Model -> Compare -> HTML/Tailwind Grid -> Side-by-side clear contrast. Phase Timeline -> Organize/Change -> Interactive HTML UI -> Allows progressive disclosure of phase details. Market Scale -> Change -> Bar Chart (Chart.js) -> Shows cumulative growth of directory targets. Tech Stack -> Compare/Organize -> Doughnut Chart (Chart.js) -> Visualizes the proportional focus of technology layers. NO SVG OR MERMAID used. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center space-x-2">
+                <div class="bg-indigo-600 text-white font-black text-xl rounded px-2 py-1 tracking-tighter">13</div>
+                <span class="text-xl font-bold tracking-tight text-slate-900">00.ai Roadmap</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#overview" class="hover:text-indigo-600 transition-colors">Overview</a>
+                <a href="#funding" class="hover:text-indigo-600 transition-colors">Funding Strategy</a>
+                <a href="#timeline" class="hover:text-indigo-600 transition-colors">Execution Timeline</a>
+                <a href="#technical" class="hover:text-indigo-600 transition-colors">Technical Stack</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+
+    <section id="overview" class="pt-8">
+        <div class="mb-8">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">The AI Adoption Platform Engine</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl leading-relaxed">
+                Welcome to the 1300.ai project dashboard. This section outlines our core thesis: building a single-schema directory engine to scale across verticals. We begin with a "confidence builder" in the Pool & Spa sector to refine our agent and infrastructure, before launching our primary attack on the high-valuation AI company market.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-center items-center text-center transform transition hover:-translate-y-1 hover:shadow-md">
+                <span class="text-4xl mb-3">🎯</span>
+                <h3 class="text-slate-500 font-semibold uppercase tracking-wider text-xs mb-1">Phase 1 MRR Target</h3>
+                <p class="text-4xl font-black text-indigo-600">~$1,660</p>
+                <p class="text-sm text-slate-500 mt-2">Initial revenue proof via the Pool & Spa confidence builder.</p>
+            </div>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-center items-center text-center transform transition hover:-translate-y-1 hover:shadow-md">
+                <span class="text-4xl mb-3">🏢</span>
+                <h3 class="text-slate-500 font-semibold uppercase tracking-wider text-xs mb-1">Initial Data Targets</h3>
+                <p class="text-4xl font-black text-rose-500">3,200+</p>
+                <p class="text-sm text-slate-500 mt-2">Combined target scrapes: 1,200 Pool targets + 2,000 AI Market companies.</p>
+            </div>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-center items-center text-center transform transition hover:-translate-y-1 hover:shadow-md">
+                <span class="text-4xl mb-3">🛡️</span>
+                <h3 class="text-slate-500 font-semibold uppercase tracking-wider text-xs mb-1">R&D Tax Incentive</h3>
+                <p class="text-4xl font-black text-emerald-500">43.5%</p>
+                <p class="text-sm text-slate-500 mt-2">Targeted offset claim via the structured Technical Activity Log.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="funding" class="bg-slate-100 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 rounded-3xl">
+        <div class="max-w-3xl mb-10">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">The Two-Track Funding Model</h2>
+            <p class="text-slate-600 text-lg">
+                This section illustrates our bifurcated financial strategy. By decoupling platform revenue from R&D funding, we ensure operational durability. Track 1 drives commercial valuation, while Track 2 subsidizes our deep technical intelligence layer (Mika).
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-indigo-500">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-2xl font-bold">1</div>
+                    <h3 class="text-2xl font-bold text-slate-900">Revenue & VC</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-3 text-lg mt-1">✓</span>
+                        <div>
+                            <strong class="block text-slate-900">Focus Area</strong>
+                            <span class="text-slate-600 text-sm">Directory platform, AI company directory, white-label infrastructure.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-3 text-lg mt-1">✓</span>
+                        <div>
+                            <strong class="block text-slate-900">Capital Sources</strong>
+                            <span class="text-slate-600 text-sm">Paid directory tiers, founding operator cohorts, eventual VC backing based on MRR scale.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm border-t-4 border-emerald-500">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl font-bold">2</div>
+                    <h3 class="text-2xl font-bold text-slate-900">Grants & R&D</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-emerald-500 mr-3 text-lg mt-1">✓</span>
+                        <div>
+                            <strong class="block text-slate-900">Focus Area</strong>
+                            <span class="text-slate-600 text-sm">Training content, regional AI adoption tracking, R&D on agents and visibility dashboards.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-emerald-500 mr-3 text-lg mt-1">✓</span>
+                        <div>
+                            <strong class="block text-slate-900">Capital Sources</strong>
+                            <span class="text-slate-600 text-sm">43.5% R&D Tax Incentive offset, regional innovation grants via partners like SPASA.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline">
+        <div class="mb-10">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">Execution Timeline</h2>
+            <p class="text-slate-600 text-lg max-w-3xl">
+                The execution of 1300.ai is broken into four distinct phases over 36 weeks. Click on each phase below to reveal the specific technical milestones, product deliverables, and core goals.
+            </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-8 bg-white p-2 rounded-xl border border-slate-200 shadow-sm w-fit">
+            <button onclick="togglePhase('phase0', this)" class="phase-btn active px-6 py-2.5 rounded-lg text-sm font-bold border border-transparent text-slate-600 hover:bg-slate-50 transition-colors">Phase 0</button>
+            <button onclick="togglePhase('phase1', this)" class="phase-btn px-6 py-2.5 rounded-lg text-sm font-bold border border-transparent text-slate-600 hover:bg-slate-50 transition-colors">Phase 1</button>
+            <button onclick="togglePhase('phase2', this)" class="phase-btn px-6 py-2.5 rounded-lg text-sm font-bold border border-transparent text-slate-600 hover:bg-slate-50 transition-colors">Phase 2</button>
+            <button onclick="togglePhase('phase3', this)" class="phase-btn px-6 py-2.5 rounded-lg text-sm font-bold border border-transparent text-slate-600 hover:bg-slate-50 transition-colors">Phase 3</button>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-10 min-h-[400px]">
+            <div id="phase0" class="phase-content active">
+                <div class="flex items-center space-x-3 mb-2">
+                    <span class="bg-slate-800 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Weeks 1-4</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Infrastructure & Ammunition</h3>
+                </div>
+                <p class="text-indigo-600 font-medium mb-8 text-lg">Goal: Build the engine and start the "warm-up" clock.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4 flex items-center"><span class="mr-2">⚙️</span> Technical Milestones</h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li><strong class="text-slate-800">Core Architecture:</strong> Stand up Supabase with multi-tenant schema. Design Universal Schema optimized for LLM RAG.</li>
+                            <li><strong class="text-slate-800">Data Engineering (Mika):</strong> Deploy Apify scrapers for ~1,200 Pool Targets. Implement Mika Scoring Script.</li>
+                            <li><strong class="text-slate-800">Outreach Stack:</strong> VentraIP domains, Google Workspace, Instantly.ai 14-day warm-up.</li>
+                            <li><strong class="text-slate-800">AI Agent:</strong> Build B2B verification script (Vapi/Retell). Twilio + n8n for HubSpot sync.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4 flex items-center"><span class="mr-2">📋</span> Business & Compliance</h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li><strong class="text-slate-800">Legal:</strong> Review B2B AI calling compliance.</li>
+                            <li><strong class="text-slate-800">R&D Setup:</strong> Initiate Technical Activity Log for 43.5% incentive.</li>
+                            <li><strong class="text-slate-800">Partnerships:</strong> Initiate talks with SPASA and Reconciliation WA.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="phase1" class="phase-content">
+                <div class="flex items-center space-x-3 mb-2">
+                    <span class="bg-indigo-600 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Weeks 5-12</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Pool & Spa: The Confidence Builder</h3>
+                </div>
+                <p class="text-indigo-600 font-medium mb-8 text-lg">Goal: Prove the engine converts and generate initial MRR.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4 flex items-center"><span class="mr-2">🚀</span> Technical Milestones</h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li><strong class="text-slate-800">Frontend Launch:</strong> Deploy findmypool.com.au (Next.js) and build Claim Flow.</li>
+                            <li><strong class="text-slate-800">Avatar Integration:</strong> Deploy Unith.ai React component; automate 7-day token refresh.</li>
+                            <li><strong class="text-slate-800">Conversion Tools:</strong> Integrate Cal.com for closing calls, Loom for testimonials.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4 flex items-center"><span class="mr-2">📦</span> Product Deliverables</h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li><strong class="text-slate-800">Founding Tier:</strong> Specific UI badges and lifetime discount logic.</li>
+                            <li><strong class="text-slate-800">Mika Dossiers:</strong> Automated PDF/Web view generation for sales context.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="phase2" class="phase-content">
+                <div class="flex items-center space-x-3 mb-2">
+                    <span class="bg-rose-500 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Weeks 13-20</span>
+                    <h3 class="text-2xl font-bold text-slate-900">The AI Market Attack</h3>
+                </div>
+                <p class="text-rose-600 font-medium mb-8 text-lg">Goal: Launch interactive AI Directory and LMS pillar.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4 flex items-center"><span class="mr-2">⚡</span> Technical Milestones</h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li><strong class="text-slate-800">AI Directory:</strong> Scrape/score ~2,000 AI companies. Implement interactive listings.</li>
+                            <li><strong class="text-slate-800">The Moat:</strong> Develop Mika monitoring engine for LLM visibility (ChatGPT/Claude). Build dashboard.</li>
+                            <li><strong class="text-slate-800">LMS Integration:</strong> White-label Coursebox, sync enrollment via Supabase.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4 flex items-center"><span class="mr-2">🎓</span> Product Deliverables</h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li><strong class="text-slate-800">AI Course:</strong> "Couch to AI Use" content production for SMEs.</li>
+                            <li><strong class="text-slate-800">Agent v2:</strong> Re-scripted calling agent for the "Leapfrog" cohort.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="phase3" class="phase-content">
+                <div class="flex items-center space-x-3 mb-2">
+                    <span class="bg-emerald-500 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Weeks 21-36</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Depth & Scaling</h3>
+                </div>
+                <p class="text-emerald-600 font-medium mb-8 text-lg">Goal: Transition from a directory to a white-label platform.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4 flex items-center"><span class="mr-2">📈</span> Technical Milestones</h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li><strong class="text-slate-800">Vertical Replication:</strong> Launch 3rd vertical (e.g., Home Reno) to test schema speed.</li>
+                            <li><strong class="text-slate-800">White-Label Pilot:</strong> Build "Organization Admin" view for industry bodies.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 border-b border-slate-100 pb-2 mb-4 flex items-center"><span class="mr-2">💼</span> Data Room Generation</h4>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li><strong class="text-slate-800">VC Metrics:</strong> Aggregate unit economics, R&D tax accruals, cross-pillar conversions.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technical">
+        <div class="mb-10">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">Technical Stack & Market Scale</h2>
+            <p class="text-slate-600 text-lg max-w-3xl">
+                This section visualizes our data targets scaling over time and the composition of our technology stack. The stack relies heavily on proprietary intelligence (Mika) supported by scalable backend infrastructure.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Market Data Targets by Phase</h3>
+                <p class="text-sm text-slate-500 mb-6">Cumulative scraped targets driving our RAG engine.</p>
+                <div class="chart-container">
+                    <canvas id="marketScaleChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Technology Stack Composition</h3>
+                <p class="text-sm text-slate-500 mb-6">Distribution of focus across system architecture layers.</p>
+                <div class="chart-container">
+                    <canvas id="techStackChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 bg-slate-800 text-white rounded-2xl p-8 shadow-md">
+            <h3 class="text-xl font-bold text-white mb-6">Immediate Action Items (Current Week)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+                    <span class="text-2xl mb-2 block">🌐</span>
+                    <strong class="block mb-1">Domains</strong>
+                    <span class="text-xs text-slate-300">Finalize findmypool.com.au & sending domains.</span>
+                </div>
+                <div class="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+                    <span class="text-2xl mb-2 block">🗄️</span>
+                    <strong class="block mb-1">Schema</strong>
+                    <span class="text-xs text-slate-300">Nikhil to approve Postgres structures.</span>
+                </div>
+                <div class="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+                    <span class="text-2xl mb-2 block">🔥</span>
+                    <strong class="block mb-1">Warm-up</strong>
+                    <span class="text-xs text-slate-300">Start 14-day email warm-up immediately (bottleneck).</span>
+                </div>
+                <div class="bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+                    <span class="text-2xl mb-2 block">🕷️</span>
+                    <strong class="block mb-1">Scraping</strong>
+                    <span class="text-xs text-slate-300">Muhammad runs initial Apify test on 100 pool targets.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="border-t border-slate-200 py-8 mt-16 text-center text-slate-500 text-sm">
+        1300.ai Development Roadmap & Architecture Overview.
+    </footer>
+
+</main>
+
+<script>
+function togglePhase(phaseId, btnElement) {
+    document.querySelectorAll('.phase-content').forEach(el => el.classList.remove('active'));
+    document.getElementById(phaseId).classList.add('active');
+    
+    document.querySelectorAll('.phase-btn').forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+}
+
+function wrapLabel(label) {
+    if (label.length <= 16) return label;
+    const words = label.split(' ');
+    const lines = [];
+    let currentLine = '';
+    words.forEach(word => {
+        if ((currentLine + word).length > 16 && currentLine !== '') {
+            lines.push(currentLine.trim());
+            currentLine = word + ' ';
+        } else {
+            currentLine += word + ' ';
+        }
+    });
+    if (currentLine.trim() !== '') lines.push(currentLine.trim());
+    return lines;
+}
+
+const commonTooltipConfig = {
+    callbacks: {
+        title: function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        }
+    }
+};
+
+const marketLabelsRaw = ['Phase 0 (Setup)', 'Phase 1 (Pool & Spa)', 'Phase 2 (AI Market)', 'Phase 3 (Replication)'];
+const marketLabels = marketLabelsRaw.map(wrapLabel);
+
+const marketCtx = document.getElementById('marketScaleChart').getContext('2d');
+new Chart(marketCtx, {
+    type: 'bar',
+    data: {
+        labels: marketLabels,
+        datasets: [{
+            label: 'Cumulative Target Listings',
+            data: [0, 1200, 3200, 5000],
+            backgroundColor: '#4f46e5',
+            borderRadius: 6,
+            barThickness: 'flex',
+            maxBarThickness: 50
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: { color: '#f1f5f9', drawBorder: false },
+                ticks: { color: '#64748b' }
+            },
+            x: {
+                grid: { display: false, drawBorder: false },
+                ticks: { color: '#64748b', font: { size: 11 } }
+            }
+        },
+        plugins: {
+            legend: { display: false },
+            tooltip: commonTooltipConfig
+        }
+    }
+});
+
+const stackLabelsRaw = [
+    'Backend (Supabase/Postgres)',
+    'Frontend (Next.js/Tailwind)',
+    'Intelligence (Mika/Apify)',
+    'AI Agents & Avatars (Vapi/Unith)',
+    'Automation & LMS (n8n/Coursebox)'
+];
+const stackLabels = stackLabelsRaw.map(wrapLabel);
+
+const stackCtx = document.getElementById('techStackChart').getContext('2d');
+new Chart(stackCtx, {
+    type: 'doughnut',
+    data: {
+        labels: stackLabels,
+        datasets: [{
+            data: [25, 20, 25, 15, 15],
+            backgroundColor: [
+                '#4f46e5',
+                '#f43f5e', 
+                '#10b981', 
+                '#f59e0b', 
+                '#0ea5e9'  
+            ],
+            borderWidth: 2,
+            borderColor: '#ffffff',
+            hoverOffset: 8
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '60%',
+        plugins: {
+            legend: {
+                position: 'right',
+                labels: {
+                    color: '#475569',
+                    font: { size: 11, family: 'Inter, sans-serif' },
+                    padding: 15,
+                    boxWidth: 12
+                }
+            },
+            tooltip: commonTooltipConfig
+        }
+    }
+});
+</script>
+
+</body>
+</html>
